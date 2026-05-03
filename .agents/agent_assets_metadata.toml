@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "MwYbW985Groqqvjv8UQWj"
+uri = "file://artifacts/portfolio/public/hero-bg.png"
+type = "image"
+title = "Liquid glass background"
+
+[[generated]]
+id = "sa-AOme0CqsbVR9M2iBXX"
+uri = "file://artifacts/portfolio/public/project-connect-hub.png"
+type = "image"
+title = "Connect Hub AI project"
+
+[[generated]]
+id = "J3ZetLRszby_6GooJWIlv"
+uri = "file://artifacts/portfolio/public/project-barter.png"
+type = "image"
+title = "Trade Barter Marketplace"
