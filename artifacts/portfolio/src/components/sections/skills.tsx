@@ -41,8 +41,8 @@ export function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skillGroup, idx) => (
-            <Spotlight key={skillGroup.category} className="rounded-2xl">
-              <GlassCard delay={idx * 0.1}>
+            <Spotlight key={skillGroup.category} className="rounded-2xl h-full">
+              <GlassCard delay={idx * 0.1} className="h-full">
                 <h3 className="text-lg font-medium text-foreground mb-6 font-mono border-b border-foreground/10 pb-4">
                   {skillGroup.category}
                 </h3>
