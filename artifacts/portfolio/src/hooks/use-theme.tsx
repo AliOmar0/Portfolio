@@ -1,32 +1,59 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark" | "system";
+export type ResolvedTheme = "light" | "dark";
 
 type ThemeContextValue = {
   theme: Theme;
+  resolved: ResolvedTheme;
   setTheme: (t: Theme) => void;
-  toggle: () => void;
+  cycle: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "portfolio-theme";
 
-function readInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+function readInitial(): Theme {
+  if (typeof window === "undefined") return "system";
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
-  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
-  return prefersLight ? "light" : "dark";
+  if (stored === "light" || stored === "dark" || stored === "system") return stored;
+  return "system";
+}
+
+function systemPrefers(): ResolvedTheme {
+  if (typeof window === "undefined") return "dark";
+  return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => readInitialTheme());
+  const [theme, setThemeState] = useState<Theme>(() => readInitial());
+  const [resolved, setResolved] = useState<ResolvedTheme>(() =>
+    theme === "system" ? systemPrefers() : theme,
+  );
 
+  // React to system preference changes when in 'system' mode.
+  useEffect(() => {
+    if (theme !== "system") {
+      setResolved(theme);
+      return;
+    }
+    const mq = window.matchMedia("(prefers-color-scheme: light)");
+    const apply = () => setResolved(mq.matches ? "light" : "dark");
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, [theme]);
+
+  // Apply resolved theme to <html>.
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    root.style.colorScheme = theme;
+    root.classList.toggle("dark", resolved === "dark");
+    root.style.colorScheme = resolved;
+  }, [resolved]);
+
+  // Persist user choice.
+  useEffect(() => {
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch {
@@ -36,8 +63,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const value: ThemeContextValue = {
     theme,
+    resolved,
     setTheme: setThemeState,
-    toggle: () => setThemeState((t) => (t === "dark" ? "light" : "dark")),
+    cycle: () =>
+      setThemeState((t) => (t === "light" ? "dark" : t === "dark" ? "system" : "light")),
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

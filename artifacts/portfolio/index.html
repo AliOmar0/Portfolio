@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
@@ -8,10 +8,34 @@
     <meta property="og:title" content="Ali Omar — Software Developer" />
     <meta property="og:description" content="Portfolio of Ali Omar, a full-stack & AI software developer based in Ramallah, Palestine." />
     <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f7fb" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="/hero-bg.avif" type="image/avif" fetchpriority="high" />
+    <script>
+      // Apply theme + dir before first paint to avoid a flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+          var resolved = stored === 'light' || stored === 'dark'
+            ? stored
+            : (prefersLight ? 'light' : 'dark');
+          var html = document.documentElement;
+          if (resolved === 'dark') html.classList.add('dark');
+          html.style.colorScheme = resolved;
+          var locale = localStorage.getItem('portfolio-locale');
+          if (locale !== 'ar' && locale !== 'en') {
+            locale = (navigator.language || 'en').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+          }
+          html.lang = locale;
+          html.dir = locale === 'ar' ? 'rtl' : 'ltr';
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

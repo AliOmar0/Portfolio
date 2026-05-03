@@ -12,17 +12,22 @@ import {
   Mail,
   Menu,
   X,
+  Search,
+  Command as CommandIcon,
 } from "lucide-react";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { ThemeToggle, ThemeToggleCompact } from "@/components/layout/theme-toggle";
+import { LocaleToggle } from "@/components/layout/locale-toggle";
+import { useI18n } from "@/hooks/use-i18n";
+import type { StringKey } from "@/lib/i18n-strings";
 
-const navLinks = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "About", href: "/about", icon: User },
-  { name: "Skills", href: "/skills", icon: Cpu },
-  { name: "Experience", href: "/experience", icon: Briefcase },
-  { name: "Projects", href: "/projects", icon: FolderGit2 },
-  { name: "Education", href: "/education", icon: GraduationCap },
-  { name: "Contact", href: "/contact", icon: Mail },
+const navLinks: { name: StringKey; href: string; icon: typeof Home }[] = [
+  { name: "nav.home", href: "/", icon: Home },
+  { name: "nav.about", href: "/about", icon: User },
+  { name: "nav.skills", href: "/skills", icon: Cpu },
+  { name: "nav.experience", href: "/experience", icon: Briefcase },
+  { name: "nav.projects", href: "/projects", icon: FolderGit2 },
+  { name: "nav.education", href: "/education", icon: GraduationCap },
+  { name: "nav.contact", href: "/contact", icon: Mail },
 ];
 
 const glassShellStyle: React.CSSProperties = {
@@ -36,9 +41,16 @@ const glassBorderStyle: React.CSSProperties = {
   background: "var(--glass-border)",
 };
 
+function openCommandPalette() {
+  window.dispatchEvent(
+    new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true }),
+  );
+}
+
 export function Navbar() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     setOpen(false);
@@ -61,10 +73,9 @@ export function Navbar() {
         initial={{ x: -120, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex fixed left-5 top-1/2 -translate-y-1/2 z-50 flex-col items-stretch"
+        className="hidden md:flex fixed left-5 top-1/2 -translate-y-1/2 z-50 flex-col items-stretch rtl:left-auto rtl:right-5"
       >
         <div className="relative">
-          {/* outer aurora glow */}
           <div
             aria-hidden="true"
             className="absolute -inset-4 rounded-[2rem] opacity-60 blur-2xl pointer-events-none"
@@ -79,20 +90,17 @@ export function Navbar() {
               className="relative rounded-[1.7rem] px-2.5 py-3 flex flex-col items-stretch gap-1 overflow-hidden"
               style={glassShellStyle}
             >
-              {/* Specular highlight */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-3 top-0 h-12 rounded-b-full opacity-70"
                 style={{ background: "var(--glass-highlight)" }}
               />
-              {/* Inner sheen */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 rounded-[1.7rem] opacity-50"
                 style={{ background: "var(--glass-sheen)" }}
               />
 
-              {/* Logo */}
               <Link
                 href="/"
                 aria-label="Home — Ali Omar"
@@ -106,6 +114,22 @@ export function Navbar() {
                 </span>
               </Link>
 
+              <button
+                type="button"
+                onClick={openCommandPalette}
+                className="group relative flex items-center gap-3 pl-3 pr-2 py-2 mb-1 rounded-2xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors"
+              >
+                <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-foreground/[0.04] border border-foreground/5 group-hover:bg-foreground/[0.08]">
+                  <Search className="w-[15px] h-[15px]" />
+                </span>
+                <span className="text-[13px] font-medium tracking-wide whitespace-nowrap me-auto">
+                  {t("nav.search")}
+                </span>
+                <kbd className="hidden lg:inline-flex items-center gap-0.5 text-[10px] font-mono px-1.5 py-0.5 rounded border border-foreground/10 bg-foreground/[0.03] text-muted-foreground">
+                  <CommandIcon className="w-2.5 h-2.5" />K
+                </kbd>
+              </button>
+
               <div className="h-px mx-2 mb-1 bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
 
               <nav className="relative flex flex-col gap-0.5">
@@ -114,7 +138,7 @@ export function Navbar() {
                   const active = isActive(link.href);
                   return (
                     <Link
-                      key={link.name}
+                      key={link.href}
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className={`group relative flex items-center gap-3 pl-3 pr-5 py-2.5 rounded-2xl transition-colors ${
@@ -146,7 +170,7 @@ export function Navbar() {
                         <Icon className="w-[15px] h-[15px]" />
                       </span>
                       <span className="relative text-[13px] font-medium tracking-wide whitespace-nowrap">
-                        {link.name}
+                        {t(link.name)}
                       </span>
                     </Link>
                   );
@@ -156,6 +180,7 @@ export function Navbar() {
               <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
 
               <ThemeToggle />
+              <LocaleToggle />
             </div>
           </div>
         </div>
@@ -170,7 +195,7 @@ export function Navbar() {
       >
         <div className="relative rounded-full p-[1px] overflow-hidden" style={glassBorderStyle}>
           <div
-            className="rounded-full px-4 py-3 flex items-center justify-between"
+            className="rounded-full px-4 py-3 flex items-center justify-between gap-2"
             style={glassShellStyle}
           >
             <Link href="/" className="flex items-center gap-2 group">
@@ -183,6 +208,15 @@ export function Navbar() {
             </Link>
 
             <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={openCommandPalette}
+                aria-label="Open command menu"
+                className="w-9 h-9 rounded-full flex items-center justify-center border border-foreground/15 bg-foreground/5 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+              <LocaleToggle compact />
               <ThemeToggleCompact />
               <button
                 type="button"
@@ -224,7 +258,7 @@ export function Navbar() {
                   const active = isActive(link.href);
                   return (
                     <Link
-                      key={link.name}
+                      key={link.href}
                       href={link.href}
                       className={`flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-2xl transition-colors ${
                         active
@@ -233,7 +267,7 @@ export function Navbar() {
                       }`}
                     >
                       <Icon className="w-4 h-4" />
-                      {link.name}
+                      {t(link.name)}
                     </Link>
                   );
                 })}
@@ -243,31 +277,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-function ThemeToggleCompact() {
-  return (
-    <div className="contents">
-      <ThemeToggleIcon />
-    </div>
-  );
-}
-
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "@/hooks/use-theme";
-
-function ThemeToggleIcon() {
-  const { theme, toggle } = useTheme();
-  const isDark = theme === "dark";
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="w-9 h-9 rounded-full flex items-center justify-center border border-foreground/15 bg-foreground/5 text-muted-foreground hover:text-foreground transition-colors"
-    >
-      {isDark ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-    </button>
   );
 }

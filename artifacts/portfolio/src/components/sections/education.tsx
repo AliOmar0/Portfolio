@@ -1,12 +1,15 @@
 import type * as React from "react";
 import { GlassCard } from "@/components/ui/glass-card";
+import { Spotlight } from "@/components/ui/spotlight";
 import { GraduationCap, Award, BookOpen, MapPin } from "lucide-react";
+import { useI18n } from "@/hooks/use-i18n";
 
 export function Education() {
+  const { t } = useI18n();
   return (
     <section id="education" className="py-24 relative bg-background/50">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">Education & Training</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">{t("education.title")}</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <GlassCard className="flex flex-col relative overflow-hidden">
@@ -53,29 +56,33 @@ export function Education() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <GlassCard>
-            <div className="flex items-center gap-3 mb-4">
-              <Award className="w-5 h-5 text-primary" />
-              <h3 className="font-bold">Training & Certifications</h3>
-            </div>
-            <ul className="space-y-2 text-muted-foreground text-sm">
-              <li><strong className="text-foreground">Udacity Nanodegree:</strong> AI Programming with Python & TensorFlow</li>
-              <li><strong className="text-foreground">Udacity Nanodegree:</strong> Data Visualization</li>
-            </ul>
-          </GlassCard>
+          <Spotlight className="rounded-2xl">
+            <GlassCard>
+              <div className="flex items-center gap-3 mb-4">
+                <Award className="w-5 h-5 text-primary" />
+                <h3 className="font-bold">{t("education.training")}</h3>
+              </div>
+              <ul className="space-y-2 text-muted-foreground text-sm">
+                <li><strong className="text-foreground">Udacity Nanodegree:</strong> AI Programming with Python & TensorFlow</li>
+                <li><strong className="text-foreground">Udacity Nanodegree:</strong> Data Visualization</li>
+              </ul>
+            </GlassCard>
+          </Spotlight>
 
-          <GlassCard>
-            <div className="flex items-center gap-3 mb-4">
-              <GlobeIcon className="w-5 h-5 text-secondary" />
-              <h3 className="font-bold">Languages</h3>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">Arabic (Native)</span>
-              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">English (Excellent)</span>
-              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">Swedish (Beginner)</span>
-              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">German (Beginner)</span>
-            </div>
-          </GlassCard>
+          <Spotlight className="rounded-2xl" color="hsl(var(--secondary) / 0.18)">
+            <GlassCard>
+              <div className="flex items-center gap-3 mb-4">
+                <GlobeIcon className="w-5 h-5 text-secondary" />
+                <h3 className="font-bold">{t("education.languages")}</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">{t("education.langs.ar")}</span>
+                <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">{t("education.langs.en")}</span>
+                <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">{t("education.langs.sv")}</span>
+                <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">{t("education.langs.de")}</span>
+              </div>
+            </GlassCard>
+          </Spotlight>
         </div>
 
       </div>

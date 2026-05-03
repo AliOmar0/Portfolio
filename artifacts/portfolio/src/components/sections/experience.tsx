@@ -1,22 +1,28 @@
 import { GlassCard } from "@/components/ui/glass-card";
+import { Spotlight } from "@/components/ui/spotlight";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { useI18n } from "@/hooks/use-i18n";
 
 export function Experience() {
+  const { t } = useI18n();
   return (
     <section id="experience" className="py-24 relative z-10">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-16 tracking-tight">
-          Professional <span className="text-glow-secondary font-light italic text-muted-foreground">Tenure.</span>
+          {t("experience.title.1")}{" "}
+          <span className="text-glow-secondary font-light italic text-muted-foreground">
+            {t("experience.title.2")}
+          </span>
         </h2>
 
-        <div className="relative border-l border-foreground/10 ml-4 md:ml-6 space-y-12">
-          <div className="relative pl-8 md:pl-12">
+        <div className="relative border-l rtl:border-l-0 rtl:border-r border-foreground/10 ml-4 md:ml-6 rtl:ml-0 rtl:mr-4 rtl:md:mr-6 space-y-12">
+          <div className="relative pl-8 md:pl-12 rtl:pl-0 rtl:pr-8 rtl:md:pr-12">
             {/* Timeline Node */}
-            <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(0,255,200,0.5)]">
+            <div className="absolute -left-3 rtl:left-auto rtl:-right-3 top-1 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(0,255,200,0.5)]">
               <div className="w-2 h-2 rounded-full bg-primary" />
             </div>
 
-            <GlassCard hoverEffect={false}>
+            <Spotlight className="rounded-2xl"><GlassCard hoverEffect={false}>
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b border-foreground/10 pb-6">
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">IT Intern</h3>
@@ -51,7 +57,7 @@ export function Experience() {
                   <span>Optimised Oracle and NoSQL databases via query tuning and RMAN backups, reducing data latency by 25%.</span>
                 </li>
               </ul>
-            </GlassCard>
+            </GlassCard></Spotlight>
           </div>
         </div>
       </div>

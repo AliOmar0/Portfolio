@@ -180,6 +180,49 @@
     border: 1px solid hsl(var(--foreground) / 0.18);
     border-radius: inherit;
   }
+
+  /* cmdk styling */
+  .cmd-group {
+    padding: 4px 4px 8px;
+  }
+  .cmd-group [cmdk-group-heading] {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: hsl(var(--muted-foreground));
+    padding: 8px 10px 4px;
+    font-weight: 600;
+  }
+  .cmd-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  .cmd-item[data-selected="true"] {
+    background: hsl(var(--foreground) / 0.07);
+    color: hsl(var(--foreground));
+  }
+  .cmd-item:hover {
+    background: hsl(var(--foreground) / 0.05);
+  }
+  .cmd-item svg {
+    flex-shrink: 0;
+    color: hsl(var(--muted-foreground));
+  }
+  .cmd-item[data-selected="true"] svg {
+    color: hsl(var(--primary));
+  }
+
+  /* RTL helpers — minimal Tailwind v4 friendly utilities for direction-aware spacing. */
+  .rtl\:rotate-180:where([dir="rtl"], [dir="rtl"] *) { transform: rotate(180deg); }
+  .rtl\:divide-x-reverse:where([dir="rtl"], [dir="rtl"] *) > * + * { --tw-divide-x-reverse: 1; }
   
   .text-glow {
     text-shadow: 0 0 20px theme('colors.primary.DEFAULT / 50%');
