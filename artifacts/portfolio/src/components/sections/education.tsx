@@ -1,3 +1,4 @@
+import type * as React from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GraduationCap, Award, BookOpen, MapPin } from "lucide-react";
 
@@ -82,7 +83,7 @@ export function Education() {
   );
 }
 
-function GlobeIcon(props: any) {
+function GlobeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

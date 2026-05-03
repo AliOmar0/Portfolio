@@ -38,13 +38,13 @@ export function Contact() {
 
           <div className="flex justify-center gap-4 mb-16">
             <Button asChild variant="outline" size="lg" className="rounded-full glass-panel border-white/10 hover:bg-white/10">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/ali-omar-developer" target="_blank" rel="noreferrer">
                 <Linkedin className="mr-2 w-4 h-4" />
                 LinkedIn
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full glass-panel border-white/10 hover:bg-white/10">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">
+              <a href="https://github.com/alidawood098" target="_blank" rel="noreferrer">
                 <Github className="mr-2 w-4 h-4" />
                 GitHub
               </a>
