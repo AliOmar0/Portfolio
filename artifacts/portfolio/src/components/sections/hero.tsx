@@ -1,21 +1,113 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Mail, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedAurora } from "@/components/effects/animated-aurora";
 
 const base = import.meta.env.BASE_URL;
 
 export function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  // Springs smooth out the cursor parallax
+  const sx = useSpring(mx, { stiffness: 60, damping: 18, mass: 0.6 });
+  const sy = useSpring(my, { stiffness: 60, damping: 18, mass: 0.6 });
+
+  // Different layers move different distances
+  const bgX = useTransform(sx, [-1, 1], [-25, 25]);
+  const bgY = useTransform(sy, [-1, 1], [-15, 15]);
+  const orb1X = useTransform(sx, [-1, 1], [40, -40]);
+  const orb1Y = useTransform(sy, [-1, 1], [30, -30]);
+  const orb2X = useTransform(sx, [-1, 1], [-60, 60]);
+  const orb2Y = useTransform(sy, [-1, 1], [-40, 40]);
+  const headlineX = useTransform(sx, [-1, 1], [-8, 8]);
+  const headlineY = useTransform(sy, [-1, 1], [-6, 6]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const handleMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const cx = (e.clientX - rect.left) / rect.width; // 0..1
+      const cy = (e.clientY - rect.top) / rect.height;
+      mx.set(cx * 2 - 1);
+      my.set(cy * 2 - 1);
+    };
+    const handleLeave = () => {
+      mx.set(0);
+      my.set(0);
+    };
+    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("mouseleave", handleLeave);
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseleave", handleLeave);
+    };
+  }, [mx, my]);
+
   return (
-    <section className="relative min-h-[100svh] flex items-center pt-24 pb-12 overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 z-0">
-        <AnimatedAurora />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-20" />
+    <section
+      ref={ref}
+      className="relative min-h-[100svh] flex items-center pt-24 pb-16 overflow-hidden"
+    >
+      {/* Background image with parallax + slow drift */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          className="absolute -inset-[8%] z-0"
+          style={{ x: bgX, y: bgY }}
+          animate={{ scale: [1.02, 1.08, 1.02] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <img
+            src={`${base}hero-bg.png`}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover opacity-70 mix-blend-screen"
+          />
+        </motion.div>
+
+        {/* Slow rotating conic glow */}
+        <motion.div
+          className="absolute -inset-[20%] z-[1] pointer-events-none opacity-50"
+          style={{
+            background:
+              "conic-gradient(from 0deg at 50% 50%, rgba(45,212,191,0.18), rgba(168,85,247,0.18), rgba(56,189,248,0.18), rgba(45,212,191,0.18))",
+            filter: "blur(80px)",
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Vignette + base wash */}
+        <div className="absolute inset-0 z-[2] bg-background/55 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 z-[3] bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div
+          className="absolute inset-0 z-[3] opacity-[0.06] pointer-events-none mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          }}
+        />
+
+        {/* Floating glow orbs that follow mouse */}
+        <motion.div
+          style={{ x: orb1X, y: orb1Y }}
+          className="absolute top-1/4 right-[10%] w-72 h-72 bg-primary/25 rounded-full blur-[100px] z-[2] pointer-events-none"
+        />
+        <motion.div
+          style={{ x: orb2X, y: orb2Y }}
+          className="absolute bottom-1/4 left-[15%] w-[28rem] h-[28rem] bg-secondary/20 rounded-full blur-[120px] z-[2] pointer-events-none"
+        />
       </div>
 
-      <div className="container relative z-30 mx-auto px-6 md:px-12 lg:px-24">
+      <div className="container relative z-30 mx-auto px-6 md:px-12 lg:px-20">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -36,6 +128,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          style={{ x: headlineX, y: headlineY }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-[1.05]"
         >
           Ali{" "}
@@ -93,15 +186,6 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        {/* Scroll cue removed — short page now */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] uppercase text-muted-foreground/60"
-        >
-          Use the navigation to explore
-        </motion.div>
       </div>
     </section>
   );

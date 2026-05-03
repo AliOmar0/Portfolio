@@ -74,10 +74,10 @@ export default function App() {
     <WouterRouter base={base}>
       <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground font-sans overflow-x-hidden">
         <Navbar />
-        <main className="relative">
+        <main className="relative md:pl-24">
           <AnimatedRoutes />
         </main>
-        <footer className="py-8 border-t border-white/5 text-center text-sm text-muted-foreground">
+        <footer className="py-8 border-t border-white/5 text-center text-sm text-muted-foreground md:pl-24">
           <div className="container mx-auto px-6">
             <p>© {new Date().getFullYear()} Ali Omar. Built with precise engineering.</p>
           </div>
