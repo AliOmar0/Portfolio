@@ -1,11 +1,13 @@
 import { GlassCard } from "@/components/ui/glass-card";
 
+const base = import.meta.env.BASE_URL;
+
 const projects = [
   {
     title: "Connect Hub AI",
     date: "01/2025 – Present",
     type: "Graduation Project",
-    image: "/project-connect-hub.png",
+    image: `${base}project-connect-hub.png`,
     stack: ["React", "TypeScript", "Node.js", "Python/FastAPI", "Twilio", "OpenAI", "Deepgram", "ElevenLabs", "Supabase"],
     description: "Architected a unified multi-channel AI customer-service platform for PIB handling WhatsApp messaging and live voice calls via Twilio Voice SDK.",
     highlights: [
@@ -18,7 +20,7 @@ const projects = [
     title: "Trade & Barter Marketplace",
     date: "11/2024 – 01/2025",
     type: "Mobile App",
-    image: "/project-barter.png",
+    image: `${base}project-barter.png`,
     stack: ["Flutter", "Dart", "Firebase", "Trello"],
     description: "Built a Flutter peer-to-peer barter app with secure auth, real-time messaging, and location-based listings.",
     highlights: [
