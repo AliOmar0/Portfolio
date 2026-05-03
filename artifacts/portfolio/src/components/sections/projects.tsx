@@ -64,7 +64,7 @@ export function Projects() {
                   <h3 className="text-3xl font-bold text-foreground">{project.title}</h3>
                 </div>
 
-                <GlassCard className="p-6 bg-white/5 border-none">
+                <GlassCard className="p-6 bg-foreground/5 border-none">
                   <p className="text-muted-foreground text-lg leading-relaxed">
                     {project.description}
                   </p>

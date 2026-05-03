@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
+import { ThemeProvider } from "@/hooks/use-theme";
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
@@ -66,23 +67,21 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
-
   return (
-    <WouterRouter base={base}>
-      <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground font-sans overflow-x-hidden">
-        <Navbar />
-        <main className="relative md:pl-56 lg:pl-60">
-          <AnimatedRoutes />
-        </main>
-        <footer className="py-8 border-t border-white/5 text-center text-sm text-muted-foreground md:pl-56 lg:pl-60">
-          <div className="container mx-auto px-6">
-            <p>© {new Date().getFullYear()} Ali Omar. Built with precise engineering.</p>
-          </div>
-        </footer>
-      </div>
-    </WouterRouter>
+    <ThemeProvider>
+      <WouterRouter base={base}>
+        <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground font-sans overflow-x-hidden transition-colors duration-300">
+          <Navbar />
+          <main className="relative md:pl-56 lg:pl-60">
+            <AnimatedRoutes />
+          </main>
+          <footer className="py-8 border-t border-foreground/10 text-center text-sm text-muted-foreground md:pl-56 lg:pl-60">
+            <div className="container mx-auto px-6">
+              <p>© {new Date().getFullYear()} Ali Omar. Built with precise engineering.</p>
+            </div>
+          </footer>
+        </div>
+      </WouterRouter>
+    </ThemeProvider>
   );
 }

@@ -70,10 +70,10 @@ export function Education() {
               <h3 className="font-bold">Languages</h3>
             </div>
             <div className="flex flex-wrap gap-3">
-              <span className="px-3 py-1 bg-white/5 rounded-md text-sm">Arabic (Native)</span>
-              <span className="px-3 py-1 bg-white/5 rounded-md text-sm">English (Excellent)</span>
-              <span className="px-3 py-1 bg-white/5 rounded-md text-sm">Swedish (Beginner)</span>
-              <span className="px-3 py-1 bg-white/5 rounded-md text-sm">German (Beginner)</span>
+              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">Arabic (Native)</span>
+              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">English (Excellent)</span>
+              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">Swedish (Beginner)</span>
+              <span className="px-3 py-1 bg-foreground/5 rounded-md text-sm">German (Beginner)</span>
             </div>
           </GlassCard>
         </div>

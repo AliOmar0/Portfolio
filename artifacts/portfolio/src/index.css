@@ -70,12 +70,12 @@
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 91%;
-  --primary: 175 80% 40%;
+  --primary: 175 80% 36%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 260 70% 60%;
+  --secondary: 260 70% 55%;
   --secondary-foreground: 0 0% 100%;
   --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted-foreground: 215.4 16.3% 38%;
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
   --destructive: 0 84.2% 60.2%;
@@ -95,6 +95,15 @@
   --opaque-button-border-intensity: -8;
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
+
+  /* Liquid-glass surface tokens */
+  --glass-bg-1: rgba(255, 255, 255, 0.78);
+  --glass-bg-2: rgba(245, 248, 255, 0.65);
+  --glass-border: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(180,200,230,0.35) 50%, rgba(255,255,255,0.85));
+  --glass-highlight: radial-gradient(120% 60% at 50% 0%, rgba(255,255,255,0.7), rgba(255,255,255,0) 70%);
+  --glass-sheen: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 40%, rgba(255,255,255,0.25) 75%, rgba(255,255,255,0.5));
+  --glass-shadow: inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(0,0,0,0.04), 0 30px 80px -20px rgba(15,30,60,0.18);
+  --glass-aura: conic-gradient(from 120deg at 50% 50%, rgba(20,184,166,0.25), rgba(124,58,237,0.18), rgba(56,189,248,0.22), rgba(20,184,166,0.25));
 }
 
 .dark {
@@ -131,6 +140,14 @@
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
+
+  --glass-bg-1: rgba(20, 30, 50, 0.55);
+  --glass-bg-2: rgba(8, 12, 24, 0.55);
+  --glass-border: linear-gradient(160deg, rgba(255,255,255,0.35), rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.02) 65%, rgba(255,255,255,0.25));
+  --glass-highlight: radial-gradient(120% 60% at 50% 0%, rgba(255,255,255,0.18), rgba(255,255,255,0) 70%);
+  --glass-sheen: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 40%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.08));
+  --glass-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04), 0 30px 80px -20px rgba(0,0,0,0.7);
+  --glass-aura: conic-gradient(from 120deg at 50% 50%, rgba(45,212,191,0.35), rgba(168,85,247,0.25), rgba(56,189,248,0.3), rgba(45,212,191,0.35));
 }
 
 @layer base {
@@ -144,16 +161,23 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-white/5 dark:bg-black/40 backdrop-blur-xl border border-white/10 dark:border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden;
+    background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(var(--foreground) / 0.08);
+    box-shadow: var(--glass-shadow);
+    @apply relative overflow-hidden;
   }
-  
+
   .glass-panel::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none;
+    background: var(--glass-sheen);
+    @apply absolute inset-0 opacity-60 pointer-events-none;
   }
-  
+
   .glass-edge {
-    @apply absolute inset-0 border border-white/20 pointer-events-none;
+    @apply absolute inset-0 pointer-events-none;
+    border: 1px solid hsl(var(--foreground) / 0.18);
     border-radius: inherit;
   }
   

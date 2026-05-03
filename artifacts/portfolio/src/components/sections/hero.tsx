@@ -64,7 +64,7 @@ export function Hero() {
             src={`${base}hero-bg.png`}
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover opacity-70 mix-blend-screen"
+            className="w-full h-full object-cover opacity-30 mix-blend-multiply dark:opacity-70 dark:mix-blend-screen"
           />
         </motion.div>
 
@@ -118,7 +118,7 @@ export function Hero() {
           <span className="font-mono text-xs sm:text-sm tracking-[0.25em] text-primary uppercase">
             Software Developer
           </span>
-          <div className="flex items-center gap-1.5 ml-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5 ml-2 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 backdrop-blur-sm text-xs text-muted-foreground">
             <MapPin className="w-3 h-3" />
             <span>Ramallah, Palestine</span>
           </div>
@@ -166,7 +166,7 @@ export function Hero() {
             asChild
             size="lg"
             variant="outline"
-            className="rounded-full px-7 glass-panel hover:bg-white/10 transition-colors border-white/20 font-medium"
+            className="rounded-full px-7 glass-panel hover:bg-foreground/10 transition-colors border-foreground/20 font-medium"
           >
             <Link href="/contact">
               <Mail className="mr-2 w-4 h-4 text-secondary" />
@@ -177,7 +177,7 @@ export function Hero() {
             asChild
             size="lg"
             variant="ghost"
-            className="rounded-full px-5 text-muted-foreground hover:text-foreground hover:bg-white/5 font-medium"
+            className="rounded-full px-5 text-muted-foreground hover:text-foreground hover:bg-foreground/5 font-medium"
           >
             <a href={`${base}Ali_Omar_CV.pdf`} download="Ali_Omar_CV.pdf">
               <Download className="mr-2 w-4 h-4" />

@@ -9,7 +9,7 @@ export function Experience() {
           Professional <span className="text-glow-secondary font-light italic text-muted-foreground">Tenure.</span>
         </h2>
 
-        <div className="relative border-l border-white/10 ml-4 md:ml-6 space-y-12">
+        <div className="relative border-l border-foreground/10 ml-4 md:ml-6 space-y-12">
           <div className="relative pl-8 md:pl-12">
             {/* Timeline Node */}
             <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(0,255,200,0.5)]">
@@ -17,7 +17,7 @@ export function Experience() {
             </div>
 
             <GlassCard hoverEffect={false}>
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b border-white/10 pb-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b border-foreground/10 pb-6">
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">IT Intern</h3>
                   <div className="flex items-center gap-2 text-primary mt-1">

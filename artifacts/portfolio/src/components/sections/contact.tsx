@@ -69,7 +69,7 @@ export function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Your name"
-                      className="bg-white/5 border-white/10 focus-visible:ring-primary/40"
+                      className="bg-foreground/5 border-foreground/10 focus-visible:ring-primary/40"
                       autoComplete="name"
                       required
                     />
@@ -84,7 +84,7 @@ export function Contact() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
-                      className="bg-white/5 border-white/10 focus-visible:ring-primary/40"
+                      className="bg-foreground/5 border-foreground/10 focus-visible:ring-primary/40"
                       autoComplete="email"
                       required
                     />
@@ -100,7 +100,7 @@ export function Contact() {
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell me about your project, role, or idea..."
                     rows={6}
-                    className="bg-white/5 border-white/10 focus-visible:ring-primary/40 resize-none"
+                    className="bg-foreground/5 border-foreground/10 focus-visible:ring-primary/40 resize-none"
                     required
                   />
                 </div>
@@ -164,7 +164,7 @@ export function Contact() {
                 <Button
                   asChild
                   variant="outline"
-                  className="rounded-full glass-panel border-white/10 hover:bg-white/10"
+                  className="rounded-full glass-panel border-foreground/10 hover:bg-foreground/10"
                 >
                   <a
                     href="https://www.linkedin.com/in/ali-omar0/"
@@ -178,7 +178,7 @@ export function Contact() {
                 <Button
                   asChild
                   variant="outline"
-                  className="rounded-full glass-panel border-white/10 hover:bg-white/10"
+                  className="rounded-full glass-panel border-foreground/10 hover:bg-foreground/10"
                 >
                   <a
                     href="https://github.com/AliOmar0"
@@ -204,7 +204,7 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-12">
+          <div className="border-t border-foreground/10 pt-12">
             <h3 className="text-xs font-medium mb-5 text-center uppercase tracking-[0.3em] text-muted-foreground">
               Reference
             </h3>
