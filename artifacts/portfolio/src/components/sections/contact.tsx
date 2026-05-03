@@ -153,9 +153,32 @@ export function Contact() {
                   </div>
 
                   {status.state === "error" && (
-                    <p className="text-sm text-destructive" role="alert">
-                      {status.error}
-                    </p>
+                    <div role="alert" className="space-y-2">
+                      <p className="text-sm text-destructive">{status.error}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {t("contact.emailFallback")}
+                      </p>
+                      <Button
+                        asChild
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full glass-panel border-foreground/10 hover:bg-foreground/10"
+                      >
+                        <a
+                          href={`mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(
+                            `Portfolio inquiry from ${name.trim() || "(no name)"}`,
+                          )}&body=${encodeURIComponent(
+                            `${message.trim()}\n\n— ${name.trim()}${
+                              email.trim() ? ` <${email.trim()}>` : ""
+                            }`,
+                          )}`}
+                        >
+                          <Mail className="mr-2 rtl:mr-0 rtl:ml-2 w-4 h-4" />
+                          {t("contact.openEmail")}
+                        </a>
+                      </Button>
+                    </div>
                   )}
                   {isSuccess && (
                     <div

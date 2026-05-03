@@ -97,6 +97,8 @@ const en = {
   "contact.successStored": "Thanks — message received.",
   "contact.error": "Something went wrong. Please try again or email me directly.",
   "contact.fillAll": "Please fill in your name, email, and message.",
+  "contact.openEmail": "Open in email app",
+  "contact.emailFallback": "Or send it straight from your email app:",
   "contact.reference": "Reference",
 
   // Command palette
@@ -202,6 +204,8 @@ const ar: Record<keyof typeof en, string> = {
   "contact.successStored": "شكرًا — تم استلام الرسالة.",
   "contact.error": "حصل خطأ. حاول مرّة أخرى أو راسلني مباشرة.",
   "contact.fillAll": "الرجاء تعبئة الاسم والبريد والرسالة.",
+  "contact.openEmail": "افتح في تطبيق البريد",
+  "contact.emailFallback": "أو أرسلها مباشرة من تطبيق بريدك:",
   "contact.reference": "مرجع",
 
   "cmd.placeholder": "ابحث في الصفحات، المشاريع، الروابط…",
