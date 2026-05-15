@@ -1,9 +1,8 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Mail, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { useI18n } from "@/hooks/use-i18n";
 
@@ -18,7 +17,6 @@ const ROLES = [
 ];
 
 export function Hero() {
-  const reduced = useReducedMotion();
   const { t } = useI18n();
 
   return (
@@ -74,33 +72,6 @@ export function Hero() {
             </span>
           </h1>
 
-          {/* Sparkles strip + glow line under the name */}
-          {!reduced && (
-            <div className="relative w-full h-20 -mt-1" aria-hidden="true">
-              <div className="absolute inset-x-0 top-2 mx-auto h-[2px] w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent blur-sm" />
-              <div className="absolute inset-x-0 top-2 mx-auto h-px w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <div className="absolute inset-x-0 top-2 mx-auto h-[3px] w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent blur-sm" />
-              <div className="absolute inset-x-0 top-2 mx-auto h-px w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent" />
-              <SparklesCore
-                background="transparent"
-                minSize={0.6}
-                maxSize={1.6}
-                particleDensity={400}
-                speed={2}
-                className="absolute inset-0 w-full h-full"
-                particleColor="#14b8a6"
-              />
-              <div
-                className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none"
-                style={{
-                  maskImage:
-                    "radial-gradient(60% 80% at 50% 0%, transparent 30%, black 80%)",
-                  WebkitMaskImage:
-                    "radial-gradient(60% 80% at 50% 0%, transparent 30%, black 80%)",
-                }}
-              />
-            </div>
-          )}
         </motion.div>
 
         {/* Gooey-morphing role display */}
