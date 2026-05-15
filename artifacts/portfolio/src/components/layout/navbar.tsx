@@ -101,19 +101,6 @@ export function Navbar() {
                 style={{ background: "var(--glass-sheen)" }}
               />
 
-              <Link
-                href="/"
-                aria-label="Home — Ali Omar"
-                className="group relative flex items-center gap-3 px-2.5 py-2 mb-1 rounded-2xl hover:bg-foreground/5 transition-colors"
-              >
-                <span className="w-9 h-9 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30 group-hover:bg-primary/30 transition-colors">
-                  <Terminal className="w-4 h-4 text-primary" />
-                </span>
-                <span className="font-bold text-sm tracking-tight whitespace-nowrap">
-                  Ali <span className="text-muted-foreground font-light">Omar</span>
-                </span>
-              </Link>
-
               <button
                 type="button"
                 onClick={openCommandPalette}
