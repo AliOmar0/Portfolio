@@ -76,26 +76,27 @@ export function Hero() {
 
           {/* Sparkles strip + glow line under the name */}
           {!reduced && (
-            <div className="relative w-full h-16 -mt-2" aria-hidden="true">
-              <div className="absolute inset-x-0 top-0 mx-auto h-[2px] w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent blur-sm" />
-              <div className="absolute inset-x-0 top-0 mx-auto h-px w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <div className="absolute inset-x-0 top-0 mx-auto h-[3px] w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent blur-sm" />
-              <div className="absolute inset-x-0 top-0 mx-auto h-px w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent" />
+            <div className="relative w-full h-20 -mt-1" aria-hidden="true">
+              <div className="absolute inset-x-0 top-2 mx-auto h-[2px] w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent blur-sm" />
+              <div className="absolute inset-x-0 top-2 mx-auto h-px w-[80%] bg-gradient-to-r from-transparent via-primary to-transparent" />
+              <div className="absolute inset-x-0 top-2 mx-auto h-[3px] w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent blur-sm" />
+              <div className="absolute inset-x-0 top-2 mx-auto h-px w-[40%] bg-gradient-to-r from-transparent via-secondary to-transparent" />
               <SparklesCore
                 background="transparent"
-                minSize={0.4}
-                maxSize={1.2}
-                particleDensity={1100}
-                className="w-full h-full"
-                particleColor="hsl(var(--primary))"
+                minSize={0.6}
+                maxSize={1.6}
+                particleDensity={400}
+                speed={2}
+                className="absolute inset-0 w-full h-full"
+                particleColor="#14b8a6"
               />
               <div
-                className="absolute inset-0 w-full h-full bg-background"
+                className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none"
                 style={{
                   maskImage:
-                    "radial-gradient(350px 70px at top, transparent 20%, black 70%)",
+                    "radial-gradient(60% 80% at 50% 0%, transparent 30%, black 80%)",
                   WebkitMaskImage:
-                    "radial-gradient(350px 70px at top, transparent 20%, black 70%)",
+                    "radial-gradient(60% 80% at 50% 0%, transparent 30%, black 80%)",
                 }}
               />
             </div>

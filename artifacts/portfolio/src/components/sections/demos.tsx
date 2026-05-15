@@ -20,7 +20,7 @@ function DemoCard({ demo, index }: { demo: (typeof demos)[number]; index: number
     >
       <Spotlight className="rounded-2xl h-full">
         <GlassCard hoverEffect={false} className="p-3 h-full flex flex-col">
-          <div className="relative rounded-xl overflow-hidden aspect-video bg-foreground/5 border border-foreground/10">
+          <div className="relative rounded-xl overflow-hidden h-[420px] md:h-[520px] bg-foreground/5 border border-foreground/10">
             {!loaded && (
               <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -34,13 +34,6 @@ function DemoCard({ demo, index }: { demo: (typeof demos)[number]; index: number
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               referrerPolicy="no-referrer"
               className="w-full h-full border-0 bg-background"
-            />
-            <a
-              href={demo.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${t("demos.openDemo")} — ${demo.title}`}
-              className="absolute inset-0"
             />
           </div>
 
@@ -107,7 +100,7 @@ export function Demos() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {demos.map((demo, i) => (
             <DemoCard key={demo.slug} demo={demo} index={i} />
           ))}

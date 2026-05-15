@@ -93,7 +93,6 @@ function AnimatedRoutes() {
           <PageShell style={style}>
             <Hero />
             <Highlights />
-            <Demos />
           </PageShell>
         </Route>
         <Route path="/about">
