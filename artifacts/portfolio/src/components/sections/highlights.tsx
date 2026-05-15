@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Code2, Layers, Globe2, Sparkles } from "lucide-react";
 import { useI18n } from "@/hooks/use-i18n";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const items = [
   { icon: Sparkles, valueKey: "highlights.years.value", labelKey: "highlights.years.label" },
@@ -29,7 +30,7 @@ export function Highlights() {
                 </span>
                 <div className="min-w-0">
                   <div className="text-xl md:text-2xl font-bold leading-none tracking-tight tabular-nums">
-                    {t(valueKey)}
+                    <AnimatedCounter value={t(valueKey)} />
                   </div>
                   <div className="text-[11px] md:text-xs text-muted-foreground mt-1.5 leading-tight">
                     {t(labelKey)}

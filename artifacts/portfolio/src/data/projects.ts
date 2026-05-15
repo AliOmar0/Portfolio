@@ -50,6 +50,31 @@ export const projects: ProjectCaseStudy[] = [
     ],
   },
   {
+    slug: "palist",
+    title: "Palist",
+    type: "Side Project",
+    date: "2025",
+    image: "project-palist.svg",
+    role: "Solo full-stack developer",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Replit"],
+    description:
+      "A discovery platform that surfaces and showcases Palestinian products and brands, helping shoppers find local alternatives quickly.",
+    problem:
+      "It is surprisingly hard to discover authentically Palestinian products online — they're scattered across small social-media stores, untagged in marketplaces, and almost invisible to anyone searching for local alternatives. People who actively want to support Palestinian makers often give up because the information just isn't aggregated anywhere.",
+    approach: [
+      "Built a single, fast catalogue UI in React + TypeScript with category filters and search-as-you-type so a product is at most two interactions away.",
+      "Designed the data model so each product carries provenance, links to the maker, and tags for category and use-case, making it easy to extend later.",
+      "Optimised the frontend for low-bandwidth users — small bundles via Vite, lazy-loaded media, and a layout that works on the most basic mobile devices.",
+      "Deployed on Replit with continuous publishing so updates ship to the live URL the moment they're committed.",
+    ],
+    outcomes: [
+      "Single discovery surface for Palestinian products with consistent metadata across categories.",
+      "Sub-second initial load on mid-range mobile devices via aggressive code-splitting and asset compression.",
+      "Living project that I can extend with new categories and contributor flows over time.",
+    ],
+    links: [{ label: "Live site", href: "https://palist.replit.app" }],
+  },
+  {
     slug: "trade-barter",
     title: "Trade & Barter Marketplace",
     type: "Mobile App",

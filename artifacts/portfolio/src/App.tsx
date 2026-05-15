@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/hooks/use-theme";
 import { I18nProvider, useI18n } from "@/hooks/use-i18n";
 import { Navbar } from "@/components/layout/navbar";
 import { CommandPalette } from "@/components/layout/command-palette";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { AmbientBackground } from "@/components/ui/ambient-background";
 import { Hero } from "@/components/sections/hero";
 import { Highlights } from "@/components/sections/highlights";
 import { About } from "@/components/sections/about";
@@ -147,6 +149,8 @@ function Shell() {
       dir={dir}
       className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground font-sans overflow-x-hidden transition-colors duration-300"
     >
+      <AmbientBackground />
+      <ScrollProgress />
       <Navbar />
       <CommandPalette />
       <main className="relative md:pl-56 lg:pl-60 rtl:md:pl-0 rtl:md:pr-56 rtl:lg:pr-60">

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#10243a"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="20%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="80%" cy="80%" r="55%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Plus Jakarta Sans', sans-serif" fill="#ffffff">
+    <text x="80" y="180" font-size="28" font-weight="500" fill-opacity="0.65" letter-spacing="6">SOFTWARE  DEVELOPER</text>
+    <text x="80" y="320" font-size="120" font-weight="800" letter-spacing="-4">Ali <tspan fill="url(#name)">Omar.</tspan></text>
+    <text x="80" y="400" font-size="34" font-weight="400" fill-opacity="0.85">Full-stack &amp; AI engineer · Ramallah, Palestine</text>
+    <text x="80" y="560" font-size="22" font-weight="500" fill-opacity="0.55" letter-spacing="3">REACT  ·  TYPESCRIPT  ·  PYTHON  ·  AI  ·  FLUTTER</text>
+  </g>
+  <g transform="translate(940 220)">
+    <rect x="0" y="0" width="180" height="180" rx="36" fill="url(#name)"/>
+    <text x="90" y="118" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="86" font-weight="800" fill="#ffffff" letter-spacing="-2">AO</text>
+  </g>
+</svg>

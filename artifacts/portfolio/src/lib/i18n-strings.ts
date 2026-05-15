@@ -104,6 +104,11 @@ const en = {
   "demos.subtitle": "A handful of small experiments hosted on GitHub Pages \u2014 each one runs live below. Click through for the full screen.",
   "demos.openDemo": "Open demo",
   "demos.viewSource": "View source",
+  "demos.openInNewTab": "Open full screen",
+  "demos.mobileFallback": "Demos work best on desktop. Tap below to open the live demo in a new tab.",
+  "notFound.title": "Page not found",
+  "notFound.body": "The page you were looking for has wandered off. Let's get you back on track.",
+  "notFound.home": "Back to home",
   "contact.reference": "Reference",
 
   // Command palette
@@ -216,6 +221,11 @@ const ar: Record<keyof typeof en, string> = {
   "demos.subtitle": "مجموعة من التجارب الصغيرة المستضافة على GitHub Pages \u2014 كلٌّ منها يعمل مباشرةً أدناه. اضغط للفتح بالحجم الكامل.",
   "demos.openDemo": "افتح التجربة",
   "demos.viewSource": "اعرض الكود",
+  "demos.openInNewTab": "افتح بملء الشاشة",
+  "demos.mobileFallback": "التجارب تعمل بشكل أفضل على سطح المكتب. اضغط أدناه لفتح التجربة المباشرة في علامة تبويب جديدة.",
+  "notFound.title": "الصفحة غير موجودة",
+  "notFound.body": "الصفحة التي تبحث عنها قد تاهت. دعنا نعيدك إلى المسار الصحيح.",
+  "notFound.home": "العودة إلى الرئيسية",
   "contact.reference": "مرجع",
 
   "cmd.placeholder": "ابحث في الصفحات، المشاريع، الروابط…",

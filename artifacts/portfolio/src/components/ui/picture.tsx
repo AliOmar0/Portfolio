@@ -28,14 +28,18 @@ export function Picture({
   className,
   ...rest
 }: PictureProps) {
-  const png = `${base}${name}.png`;
+  // If the caller passes a full filename (e.g. "foo.svg"), serve that single
+  // file directly. Otherwise treat `name` as a base and serve avif/webp/png.
+  const hasExt = /\.[a-z0-9]+$/i.test(name);
+  const single = hasExt ? `${base}${name}` : null;
+  const png = single ?? `${base}${name}.png`;
   const webp = `${base}${name}.webp`;
   const avif = `${base}${name}.avif`;
 
   return (
     <picture className={pictureClassName}>
-      <source srcSet={avif} type="image/avif" />
-      <source srcSet={webp} type="image/webp" />
+      {!single && <source srcSet={avif} type="image/avif" />}
+      {!single && <source srcSet={webp} type="image/webp" />}
       <img
         src={png}
         alt={alt}
