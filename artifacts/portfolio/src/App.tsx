@@ -12,6 +12,7 @@ import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
+import { Demos } from "@/components/sections/demos";
 import { Education } from "@/components/sections/education";
 import { Contact } from "@/components/sections/contact";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -92,6 +93,7 @@ function AnimatedRoutes() {
           <PageShell style={style}>
             <Hero />
             <Highlights />
+            <Demos />
           </PageShell>
         </Route>
         <Route path="/about">
@@ -107,7 +109,10 @@ function AnimatedRoutes() {
           <PageShell style={style}><ProjectDetail /></PageShell>
         </Route>
         <Route path="/projects">
-          <PageShell style={style}><Projects /></PageShell>
+          <PageShell style={style}>
+            <Projects />
+            <Demos />
+          </PageShell>
         </Route>
         <Route path="/education">
           <PageShell style={style}><Education /></PageShell>

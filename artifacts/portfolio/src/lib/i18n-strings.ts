@@ -99,6 +99,11 @@ const en = {
   "contact.fillAll": "Please fill in your name, email, and message.",
   "contact.openEmail": "Open in email app",
   "contact.emailFallback": "Or send it straight from your email app:",
+  "demos.eyebrow": "Live demos",
+  "demos.title": "Things you can play with right now",
+  "demos.subtitle": "A handful of small experiments hosted on GitHub Pages \u2014 each one runs live below. Click through for the full screen.",
+  "demos.openDemo": "Open demo",
+  "demos.viewSource": "View source",
   "contact.reference": "Reference",
 
   // Command palette
@@ -206,6 +211,11 @@ const ar: Record<keyof typeof en, string> = {
   "contact.fillAll": "الرجاء تعبئة الاسم والبريد والرسالة.",
   "contact.openEmail": "افتح في تطبيق البريد",
   "contact.emailFallback": "أو أرسلها مباشرة من تطبيق بريدك:",
+  "demos.eyebrow": "تجارب مباشرة",
+  "demos.title": "أشياء يمكنك تجربتها الآن",
+  "demos.subtitle": "مجموعة من التجارب الصغيرة المستضافة على GitHub Pages \u2014 كلٌّ منها يعمل مباشرةً أدناه. اضغط للفتح بالحجم الكامل.",
+  "demos.openDemo": "افتح التجربة",
+  "demos.viewSource": "اعرض الكود",
   "contact.reference": "مرجع",
 
   "cmd.placeholder": "ابحث في الصفحات، المشاريع، الروابط…",
