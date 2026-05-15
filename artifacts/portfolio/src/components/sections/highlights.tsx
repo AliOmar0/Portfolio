@@ -13,7 +13,7 @@ const items = [
 export function Highlights() {
   const { t } = useI18n();
   return (
-    <section className="relative -mt-2 mb-8">
+    <section className="relative -mt-12 md:-mt-16 mb-8 z-20">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

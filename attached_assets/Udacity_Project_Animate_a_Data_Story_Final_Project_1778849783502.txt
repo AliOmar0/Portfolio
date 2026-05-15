@@ -1,0 +1,99 @@
+Introduction
+You are an analyst for the World Bank, understanding trends in global development by country and year. Your manager has asked you to prepare an auditorium presentation that brings these trends to life.
+
+Project Overview
+In this final project, you will create an animated bubble chart, make a story out of it, and add audio narration for your audience. You will use the World Indicators dataset energy_environment_economy.csv to build out your narrated story in Flourish.
+
+Dataset
+We will be using the World Indicators dataset. It is available below under Supporting Materials. The dataset file is: “Energy Environment Economy.csv” . The data set features annual data about 217 countries and territories from 1990 through 2014. This dataset has been compiled from datasets originally sourced from the World Bank(opens in a new tab) data bank.
+
+The data set includes the following fields:
+
+Country Name: Name of the country
+Country Code: 3-digit code for each country
+Region: The region of the globe the country is a part of (e.g. North America, Europe & Central Asia, etc.)
+Income Group: Whether each country is part of the High income, Upper middle income, lower middle income, or Low income
+Year
+Energy use (kg of oil equivalents per capita)
+Population
+CO2 emissions (metric tons per capita)
+Renewable energy consumption (% of energy)
+GDP per capita, PPP (purchase price parity)
+Electric power consumption (kWh per capita)
+Access to electricity (% of population)
+Forest area (% of land)
+Supporting Materials
+Energy Environment Economy
+
+Project Instructions
+To complete the project, you’ll need to complete the following tasks:
+A. Using the data set, create a new Bubble Chart in Flourish Studio
+B. Import your data, choosing the data set for this project.
+C. Create a Flourish story
+
+To create the Flourish story, you need to finish the following tasks:__
+
+Build a bubble chart with the correct columns in the data for the following:
+
+X values
+Y values
+Name
+Color
+Size and Shape (Optional)
+Time field
+Series to connect with line
+Make sure the chart is animated across time and data and reflects the changes for each country.
+
+Add the Bubble chart to the Story
+
+Create at least three different tiles with the final tile animating the bubbles.
+
+Add an audio to the Story.
+
+Publish it to the web.
+
+Submission
+For your submission, you will submit the link to your data story published to your Flourish Public account.
+
+Rubric
+Use this project rubric to understand and assess the project criteria.
+
+Chart Specifications
+Criteria	Submission Requirements
+Create a Hans Rosling animated bubble chart from the World Bank data chart.
+
+The animation should work to replicate a Hans Rosling animated bubble chart.
+
+The chart specification should specify a value for each of the following:
+
+X values
+Y values
+Name
+Color
+Time field
+Series to connect with line
+A value should be specified for each of these. The bubble chart should include an appropriate column choice that reflects the story narrative.
+
+Story Specifications
+Criteria	Submission Requirements
+Create a new Flourish Story out of the Hans Rosling chart.
+
+The Flourish story should include text tabs in the top navigation bar to showcase the storyline.
+
+The Flourish story should include multiple tiles.
+
+Students should include a legend, and a minimum of 3 navigation tiles.
+
+Story title should include necessary information about the author, source and tool.
+
+The story title page should include all the details to help inform the viewer with some background information about the author of the story, where they got the data from and which tool they used.
+
+Narration
+Criteria	Submission Requirements
+Story has an audio track.
+
+The story should include a script or a variant of the story that is captured on the audio track.
+
+The interactive story should include annotations and descriptions so the viewer can understand the story with the presented Flourish story.
+
+The story should include correct formatting and textual descriptions (including story title, chart title).
